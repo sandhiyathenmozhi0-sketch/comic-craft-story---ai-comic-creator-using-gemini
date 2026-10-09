@@ -1,0 +1,8 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Export complete — ComicCraft</title><link rel="stylesheet" href="/static/css/styles.css"></head>
+<body><main class="success-wrap"><div class="success-mark">✓</div><p class="eyebrow">MISSION ACCOMPLISHED</p>
+<h1>Your story is ready to go.</h1><p class="sub">Your comic PDF has been prepared. Download it or start a brand-new adventure.</p>
+{% if pdf_path %}<a class="primary button-link" href="{{ pdf_path }}" download>Download PDF again</a>{% endif %}
+<a class="secondary-link" href="/">← Go create another comic</a></main></body></html>

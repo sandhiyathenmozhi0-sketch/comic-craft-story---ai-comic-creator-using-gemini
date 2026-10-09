@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Comic — ComicCraft</title><link rel="stylesheet" href="/static/css/styles.css"></head>
+<body>
+<header class="topbar"><a class="brand" href="/">✦ ComicCraft</a><a class="secondary-link" href="/">Create another</a></header>
+<main class="results">
+  <p class="eyebrow">YOUR CREATION IS READY</p><h1>Your comic, panel by panel.</h1>
+  <p class="sub">Made for {{ inputs.character_name }} · {{ inputs.tone }} · {{ inputs.art_style }}</p>
+  <div class="comic-grid">
+  {% for panel in layout %}
+    <article class="panel-card">
+      <div class="panel-heading"><span>0{{ panel.panel_number }}</span><h2>{{ panel.title }}</h2></div>
+      <img src="{{ panel.image_path }}" alt="Illustration for {{ panel.title }}" loading="lazy">
+      <div class="panel-copy">
+        <p class="scene">{{ panel.scene_description }}</p>
+        {% if panel.caption %}<p class="caption">{{ panel.caption }}</p>{% endif %}
+        {% if panel.narration %}<p>{{ panel.narration }}</p>{% endif %}
+        {% if panel.dialogue %}<p class="dialogue">“{{ panel.dialogue }}”</p>{% endif %}
+      </div>
+    </article>
+  {% endfor %}
+  </div>
+  {% if story %}<section class="story-box"><h2>Full story</h2><pre>{{ story }}</pre></section>{% endif %}
+  <section class="download-box"><div><h2>Keep your story</h2><p>Download all five panels and their narration as a PDF.</p></div>
+    <a class="primary button-link" href="{{ pdf_path }}" download>Download comic PDF ↓</a>
+  </section>
+  <p class="center"><a class="secondary-link" href="/export-success?pdf={{ pdf_path | urlencode }}">View export confirmation</a></p>
+</main>
+</body></html>

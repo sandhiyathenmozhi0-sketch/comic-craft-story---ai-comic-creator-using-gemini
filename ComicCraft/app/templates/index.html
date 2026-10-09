@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ComicCraft — AI Comic Creator</title>
+  <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body class="home-page">
+  <main class="hero">
+    <nav class="nav"><a class="brand" href="/">✦ ComicCraft</a><span>Turn your imagination into panels</span></nav>
+    <section class="intro">
+      <p class="eyebrow">YOUR STORY. YOUR UNIVERSE.</p>
+      <h1>Make a comic out of <span>anything.</span></h1>
+      <p class="sub">Create a five-panel comic with AI-generated storytelling and illustrations.</p>
+    </section>
+    <form class="form-card" action="/generate" method="post">
+      {% if error %}<div class="error" role="alert">{{ error }}</div>{% endif %}
+      <label for="story_prompt">Story idea</label>
+      <textarea id="story_prompt" name="story_prompt" required minlength="5" maxlength="1200" placeholder="A brave fox discovers a glowing door in an enchanted forest..." rows="3"></textarea>
+      <div class="form-grid">
+        <div><label for="character_name">Main character</label><input id="character_name" name="character_name" value="Milo" required maxlength="80"></div>
+        <div><label for="setting">Setting</label><select id="setting" name="setting"><option>enchanted forest</option><option>school</option><option>space</option><option>city</option><option>underwater kingdom</option><option>future world</option></select></div>
+        <div><label for="tone">Story tone</label><select id="tone" name="tone"><option>light-hearted</option><option>dramatic</option><option>poetic</option><option>funny</option></select></div>
+        <div><label for="art_style">Art style</label><select id="art_style" name="art_style"><option>comic book</option><option>anime</option><option>pixel art</option><option>realistic</option></select></div>
+      </div>
+      <button class="primary" type="submit">Create my comic <span>→</span></button>
+      <p class="fine-print">Generation may take a few minutes depending on AI service availability.</p>
+    </form>
+    <footer>Powered by Gemini · Hugging Face · FastAPI</footer>
+  </main>
+</body>
+</html>
